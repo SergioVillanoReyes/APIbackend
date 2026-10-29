@@ -37,7 +37,9 @@ Si el agente encuentra contradicciones entre la documentación, el código exist
 
 ## 2. Documentos SDD Existentes en el Repositorio
 
-La primera funcionalidad implementada en el proyecto es la autenticación JWT. Sus documentos oficiales residen en las siguientes rutas verificadas:
+El repositorio cuenta con especificaciones oficiales organizadas por funcionalidad bajo `docs/features/`:
+
+### 2.1 Autenticación JWT (`docs/features/authentication/`)
 
 | Ruta del documento | Propósito y función |
 |---|---|
@@ -48,7 +50,17 @@ La primera funcionalidad implementada en el proyecto es la autenticación JWT. S
 | `docs/features/authentication/README.md` | Guía para desarrolladores: requisitos de entorno, configuración de User Secrets, ejecución de migraciones EF Core y pruebas locales/Postman. |
 | `docs/features/authentication/authentication.postman_collection.json` | Colección exportada de Postman para pruebas de endpoints. |
 
-> **Nota:** Los archivos bajo `.github/` (`.github/copilot-instructions.md`, `.github/instructions/dotnet.instructions.md`, `.github/agents/planner.agent.md` y `.github/agents/reviewer.agent.md`) se encuentran actualmente vacíos como marcadores de posición iniciales y no sustituyen a este documento.
+### 2.2 Integración Continua y Agentes (`docs/features/ci-cd/`)
+
+| Ruta del documento | Propósito y función |
+|---|---|
+| `docs/features/ci-cd/intent.md` | Justificación, objetivos de CI, configuración de agentes Planner/Reviewer y principio de mínimo privilegio. |
+| `docs/features/ci-cd/spec.md` | Requisitos del workflow de GitHub Actions, especificación de roles de agentes y escenarios de aceptación. |
+| `docs/features/ci-cd/plan.md` | Plan ejecutado, archivos implementados y comandos de validación en Release. |
+| `docs/features/ci-cd/map.md` | Ciclo de vida del cambio (Usuario -> Planner -> Código -> Reviewer -> GitHub Actions). |
+| `docs/features/ci-cd/README.md` | Guía operativa de CI y uso de agentes en el entorno local. |
+
+> **Nota sobre configuración de agentes en `.github/`:** Los archivos `.github/copilot-instructions.md`, `.github/instructions/dotnet.instructions.md`, `.github/agents/planner.agent.md` y `.github/agents/reviewer.agent.md` contienen las instrucciones operativas específicas de cada rol, supeditadas en todo momento a las reglas generales de este `AGENTS.md`.
 
 ---
 
@@ -172,7 +184,7 @@ Los siguientes elementos representan aspectos detectados en el repositorio cuya 
 1. **Archivos de plantilla `Class1.cs`:** Existen clases vacías `Class1.cs` en `src/Domain`, `src/Application` y `src/Infrastructure`. Se mantienen sin uso y no deben eliminarse hasta que el usuario lo autorice en una tarea de limpieza.
 2. **Endpoint `/weatherforecast`:** La ruta `/weatherforecast` en `src/WebApi/Program.cs` se conserva de la plantilla inicial. No debe eliminarse ni alterarse sin indicación expresa.
 3. **Organización física de contratos y modelos en `Application`:** Los contratos actuales de autenticación están consolidados en `AuthenticationContracts.cs`, coexistiendo con subcarpetas vacías (`Contracts/`, `Login/`, `Models/`). No se debe forzar una reestructuración de archivos ni en esta feature ni en futuras features sin previa definición del usuario.
-4. **Instrucciones en `.github/`:** Los archivos de Copilot y agentes dentro de `.github/` permanecen vacíos por el momento; no deben modificarse ni poblarse hasta nueva indicación.
+4. **Instrucciones en `.github/`:** Implementadas y activas según la especificación de `docs/features/ci-cd/` para los roles Planner y Reviewer.
 
 ---
 
